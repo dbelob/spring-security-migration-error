@@ -16,11 +16,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .formLogin()
+                .loginPage("/login")
                 .and()
             .httpBasic()
                 .and()
             .authorizeRequests()
-                .antMatchers("/login", "/public").permitAll()
+                .antMatchers("/login", "/public", "/css/**").permitAll()
                 .anyRequest().authenticated();
     }
 
